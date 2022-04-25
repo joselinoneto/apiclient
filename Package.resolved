@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6299daec1d74be12164fec090faf9ed14d0da9d6"
+      }
+    },
+    {
+      "identity" : "toolboxapiclient",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/joselinoneto/ToolboxAPIClient",
+      "state" : {
+        "revision" : "0ba73d3d04e2c5f1d5f1a0cda23720012634824a",
+        "version" : "1.0.9"
+      }
+    }
+  ],
+  "version" : 2
+}
