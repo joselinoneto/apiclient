@@ -8,23 +8,23 @@
 import Foundation
 import KeychainAccess
 
-class KeychainStorage {
+public class KeychainStorage {
     private var keyChainWrapper: Keychain
     private init() {
         keyChainWrapper = Keychain()
     }
 
-    static var shared: KeychainStorage = KeychainStorage()
+    public static var shared: KeychainStorage = KeychainStorage()
     
-    func getValueForKey(_ key: String) -> String? {
+    public func getValueForKey(_ key: String) -> String? {
         try? keyChainWrapper.getString(key)
     }
     
-    func set(newValue: String, forKey: String) {
+    public func set(newValue: String, forKey: String) {
         try? keyChainWrapper.set(newValue, key: forKey)
     }
     
-    func clearStorage() {
+    public func clearStorage() {
         try? keyChainWrapper.removeAll()
     }
 }

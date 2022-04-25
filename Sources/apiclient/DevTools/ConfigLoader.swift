@@ -7,9 +7,9 @@
 
 import Foundation
 
-class ConfigLoader {
-    static let shared: ConfigLoader = ConfigLoader()
-    let appConfig: AppConfiguration
+public class ConfigLoader {
+    public static let shared: ConfigLoader = ConfigLoader()
+    public let appConfig: AppConfiguration
 
     private init() {
         appConfig = ConfigLoader.parseFile()
@@ -32,11 +32,11 @@ class ConfigLoader {
     }
 }
 
-struct AppConfiguration: Decodable {
-    let config: String
-    let apiUrl: String
-    let testFlags: TestFlags?
-    let token: String
+public struct AppConfiguration: Decodable {
+    public let config: String
+    public let apiUrl: String
+    public let testFlags: TestFlags?
+    public let token: String
     
     enum CodingKeys: String, CodingKey {
         case config
@@ -46,8 +46,8 @@ struct AppConfiguration: Decodable {
     }
 }
 
-struct TestFlags: Decodable {
-    let resetData: Bool
-    let noSplash: Bool
-    let applyTestData: Bool
+public struct TestFlags: Decodable {
+    public let resetData: Bool
+    public let noSplash: Bool
+    public let applyTestData: Bool
 }
