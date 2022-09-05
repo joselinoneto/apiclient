@@ -11,20 +11,20 @@ import Combine
 import ToolboxAPIClient
 
 public class LoginManagerAPI: LoginRequestable {
-    public func login(email: String, password: String) -> AnyPublisher<LoginDto?, Error> {
+    public func login(email: String, password: String) async throws -> LoginDto? {
         let login: LoginDto = LoginDto(email: email, password: password, token: nil)
-        return BaseNetworkWorker<LoginDto>(target: LoginTarget.login(email: email, password: password))
+        return try await BaseNetworkWorker<LoginDto>(target: LoginTarget.login(email: email, password: password))
             .urlRequest(contentBody: login)
     }
     
-    public func createUser(email: String, password: String) -> AnyPublisher<LoginDto?, Error> {
+    public func createUser(email: String, password: String) async throws -> LoginDto? {
         let login: LoginDto = LoginDto(email: email, password: password, token: nil)
-        return BaseNetworkWorker<LoginDto>(target: LoginTarget.createUser(email: email, password: password))
+        return try await BaseNetworkWorker<LoginDto>(target: LoginTarget.createUser(email: email, password: password))
             .urlRequest(contentBody: login)
     }
     
-    public func me() -> AnyPublisher<UserDto?, Error> {
-        BaseNetworkWorker<UserDto>(target: LoginTarget.me).urlRequest()
+    public func me() async throws -> UserDto?{
+        try await BaseNetworkWorker<UserDto>(target: LoginTarget.me).urlRequest()
     }
     
     public init() {

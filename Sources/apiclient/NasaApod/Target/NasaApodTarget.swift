@@ -6,13 +6,11 @@
 //
 
 import Foundation
-import Combine
 import ToolboxAPIClient
-import SwiftUI
 
 public protocol NasaApodRequestable {
-    func getApods(per: Int, page: Int) -> AnyPublisher<ApiResponseDto?, Error>
-    func getApodsRandomly() -> AnyPublisher<[NasaApodDto]?, Error>
+    func getApods(per: Int, page: Int) async throws -> ApiResponseDto?
+    func getApodsRandomly() async throws -> [NasaApodDto]?
 }
 
 public enum NasaApodTarget {

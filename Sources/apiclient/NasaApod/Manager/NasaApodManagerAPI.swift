@@ -15,11 +15,11 @@ public class NasaApodManagerAPI: NasaApodRequestable {
         
     }
 
-    public func getApods(per: Int, page: Int) -> AnyPublisher<ApiResponseDto?, Error> {
-        BaseNetworkWorker<ApiResponseDto>(target: NasaApodTarget.getApods(per: per, page: page)).urlRequest()
+    public func getApods(per: Int, page: Int) async throws -> ApiResponseDto? {
+        try await BaseNetworkWorker<ApiResponseDto>(target: NasaApodTarget.getApods(per: per, page: page)).urlRequest()
     }
 
-    public func getApodsRandomly() -> AnyPublisher<[NasaApodDto]?, Error> {
-        BaseNetworkWorker<[NasaApodDto]>(target: NasaApodTarget.getApodsRandomly).urlRequest()
+    public func getApodsRandomly() async throws -> [NasaApodDto]? {
+        try await BaseNetworkWorker<[NasaApodDto]>(target: NasaApodTarget.getApodsRandomly).urlRequest()
     }
 }

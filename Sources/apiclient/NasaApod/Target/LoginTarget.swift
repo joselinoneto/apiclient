@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import Combine
 import ToolboxAPIClient
 
 public protocol LoginRequestable {
-    func createUser(email: String, password: String) -> AnyPublisher<LoginDto?, Error>
-    func login(email: String, password: String) -> AnyPublisher<LoginDto?, Error>
-    func me() -> AnyPublisher<UserDto?, Error>
+    func createUser(email: String, password: String) async throws -> LoginDto?
+    func login(email: String, password: String) async throws -> LoginDto?
+    func me() async throws -> UserDto?
 }
 
 public enum LoginTarget {
