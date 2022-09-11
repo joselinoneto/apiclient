@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/joselinoneto/ToolboxAPIClient",
       "state" : {
-        "revision" : "0ba73d3d04e2c5f1d5f1a0cda23720012634824a",
-        "version" : "1.0.9"
+        "revision" : "4fe2e381f21fa47643adf3db2b06fe61813c6bf7",
+        "version" : "1.1.1"
       }
     }
   ],
