@@ -7,6 +7,7 @@
 
 import Foundation
 import ToolboxAPIClient
+import tools
 
 public protocol LoginRequestable {
     func createUser(email: String, password: String) async throws -> LoginDto?

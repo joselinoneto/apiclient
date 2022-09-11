@@ -7,6 +7,7 @@
 
 import Foundation
 import ToolboxAPIClient
+import tools
 
 public protocol NasaApodRequestable {
     func getApods(per: Int, page: Int) async throws -> ApiResponseDto?
