@@ -19,7 +19,7 @@ public class NasaApodManagerAPI: NasaApodRequestable {
         try await BaseNetworkWorker<ApiResponseDto>(target: NasaApodTarget.getApods(per: per, page: page)).urlRequest()
     }
 
-    public func getApodsRandomly() async throws -> [NasaApodDto]? {
-        try await BaseNetworkWorker<[NasaApodDto]>(target: NasaApodTarget.getApodsRandomly).urlRequest()
+    public func getMonthsApods(per: Int = 100, page: Int = 1, startDate: String, endDate: String) async throws -> ApiResponseDto? {
+        try await BaseNetworkWorker<ApiResponseDto>(target: NasaApodTarget.getMonthsApods(per: per, page: page, startDate: startDate, endDate: endDate)).urlRequest()
     }
 }

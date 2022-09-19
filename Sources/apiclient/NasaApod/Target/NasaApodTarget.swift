@@ -11,12 +11,12 @@ import tools
 
 public protocol NasaApodRequestable {
     func getApods(per: Int, page: Int) async throws -> ApiResponseDto?
-    func getApodsRandomly() async throws -> [NasaApodDto]?
+    func getMonthsApods(per: Int, page: Int, startDate: String, endDate: String) async throws -> ApiResponseDto?
 }
 
 public enum NasaApodTarget {
     case getApods(per: Int, page: Int)
-    case getApodsRandomly
+    case getMonthsApods(per: Int, page: Int, startDate: String, endDate: String)
     
 }
 
@@ -27,8 +27,12 @@ extension NasaApodTarget: TargetType {
             return [
                 URLQueryItem(name: "per", value: per.description),
                 URLQueryItem(name: "page", value: page.description)]
-        default:
-            return []
+        case .getMonthsApods(let per, let page, let startDate, let endDate):
+            return [
+                URLQueryItem(name: "per", value: per.description),
+                URLQueryItem(name: "page", value: page.description),
+                URLQueryItem(name: "startDate", value: startDate),
+                URLQueryItem(name: "endDate", value: endDate)]
         }
     }
     
@@ -38,18 +42,14 @@ extension NasaApodTarget: TargetType {
     
     public var path: String {
         switch self {
-        case .getApods:
+        case .getApods, .getMonthsApods:
             return "apod"
-        case .getApodsRandomly:
-            return "randomly"
         }
     }
     
     public var method: HttpMethodEnum {
         switch self {
-        case .getApods:
-            return .get
-        case .getApodsRandomly:
+        case .getApods, .getMonthsApods:
             return .get
         }
     }
