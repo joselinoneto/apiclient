@@ -17,6 +17,15 @@
         "revision" : "4fe2e381f21fa47643adf3db2b06fe61813c6bf7",
         "version" : "1.1.1"
       }
+    },
+    {
+      "identity" : "tools",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:joselinoneto/tools.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0edbfc4230a975a2dbde4eb104712743ff8d7e24"
+      }
     }
   ],
   "version" : 2
