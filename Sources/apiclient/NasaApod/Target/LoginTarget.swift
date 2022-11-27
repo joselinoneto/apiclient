@@ -32,7 +32,7 @@ extension LoginTarget: TargetType {
     }
     
     public var baseURL: URL {
-        return URL(string: ConfigLoader.shared.appConfig.apiUrl)!
+        return URL(string: ConfigLoader.shared.appConfig?.apiUrl ?? "")!
     }
     
     public var path: String {

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
       "state" : {
-        "branch" : "master",
-        "revision" : "6299daec1d74be12164fec090faf9ed14d0da9d6"
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:joselinoneto/tools.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "0edbfc4230a975a2dbde4eb104712743ff8d7e24"
+        "revision" : "971f3003b819ef973455e0f3b51138c892db59fc",
+        "version" : "1.0.2"
       }
     }
   ],
