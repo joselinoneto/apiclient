@@ -37,7 +37,7 @@ extension NasaApodTarget: TargetType {
     }
     
     public var baseURL: URL {
-        return URL(string: ConfigLoader.shared.appConfig?.apiUrl ?? "")!
+        return URL(string: ConfigLoader.shared.appConfig.apiUrl)!
     }
     
     public var path: String {
@@ -55,7 +55,7 @@ extension NasaApodTarget: TargetType {
     }
     
     public var headers: [String : String]? {
-        guard let key = ConfigLoader.shared.appConfig?.token else { return nil }
+        let key = ConfigLoader.shared.appConfig.token
         guard let token = try? KeychainStorage.shared.getValueForKey(key) ?? "" else { return nil }
         return ["Authorization": "Bearer  \(token)"]
     }
