@@ -16,10 +16,11 @@ public class NasaApodManagerAPI: NasaApodRequestable {
     }
 
     public func getApods(per: Int, page: Int) async throws -> ApiResponseDto? {
-        try await BaseNetworkWorker<ApiResponseDto>(target: NasaApodTarget.getApods(per: per, page: page)).urlRequest()
+        try await BaseNetworkWorker<ApiResponseDto, ApiErrorDto>(target: NasaApodTarget.getApods(per: per, page: page)).urlRequest()
     }
 
     public func getMonthsApods(per: Int = 100, page: Int = 1, startDate: String, endDate: String) async throws -> ApiResponseDto? {
-        try await BaseNetworkWorker<ApiResponseDto>(target: NasaApodTarget.getMonthsApods(per: per, page: page, startDate: startDate, endDate: endDate)).urlRequest()
+        let target = NasaApodTarget.getMonthsApods(per: per, page: page, startDate: startDate, endDate: endDate)
+        return try await BaseNetworkWorker<ApiResponseDto, ApiErrorDto>(target: target).urlRequest()
     }
 }
