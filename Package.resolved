@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "toolboxapiclient",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/joselinoneto/ToolboxAPIClient",
-      "state" : {
-        "revision" : "4fe2e381f21fa47643adf3db2b06fe61813c6bf7",
-        "version" : "1.1.1"
-      }
-    },
-    {
       "identity" : "tools",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/joselinoneto/tools",
