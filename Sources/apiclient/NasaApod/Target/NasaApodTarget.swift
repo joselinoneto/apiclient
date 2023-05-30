@@ -17,7 +17,6 @@ public protocol NasaApodRequestable {
 public enum NasaApodTarget {
     case getApods(per: Int, page: Int)
     case getMonthsApods(per: Int, page: Int, startDate: String, endDate: String)
-    
 }
 
 extension NasaApodTarget: TargetType {
@@ -55,8 +54,7 @@ extension NasaApodTarget: TargetType {
     }
     
     public var headers: [String : String]? {
-        let key = ConfigLoader.shared.appConfig.token
-        guard let token = try? KeychainStorage.shared.getValueForKey(key) ?? "" else { return nil }
-        return ["Authorization": "Bearer  \(token)"]
+        guard let token = KeychainStorage.shared.accessToken else { return nil }
+        return ["Authorization": "Bearer \(token)"]
     }
 }
