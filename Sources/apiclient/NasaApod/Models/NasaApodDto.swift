@@ -17,21 +17,5 @@ public struct NasaApodDto: Codable {
     public let url: String?
     public let hdurl: String?
     public let copyright: String?
-
-    public var postedDate: Date? {
-        guard let localDate = date else { return nil }
-        let formatter = DateFormatter.yyyyMMdd
-        return formatter.date(from: localDate)
-    }
-}
-
-extension DateFormatter {
-    static let yyyyMMdd: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
+    public var postedDate: Date?
 }
