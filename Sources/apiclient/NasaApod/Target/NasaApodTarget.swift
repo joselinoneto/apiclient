@@ -36,6 +36,7 @@ extension NasaApodTarget: TargetType {
     }
     
     public var baseURL: URL {
+        #warning("this crashes app withou config plist")
         return URL(string: ConfigLoader.shared.appConfig.apiUrl)!
     }
     
