@@ -12,11 +12,15 @@ import tools
 public protocol NasaApodRequestable {
     func getApods(per: Int, page: Int) async throws -> ApiResponseDto?
     func getMonthsApods(per: Int, page: Int, startDate: String, endDate: String) async throws -> ApiResponseDto?
+    func getRefreshMonthsApods(per: Int, page: Int, startDate: String, endDate: String) async throws -> ApiResponseDto?
+    func syncData(per: Int, page: Int) async throws -> ApiResponseDto?
 }
 
 public enum NasaApodTarget {
     case getApods(per: Int, page: Int)
     case getMonthsApods(per: Int, page: Int, startDate: String, endDate: String)
+    case getRefreshMonthsApods(per: Int, page: Int, startDate: String, endDate: String)
+    case syncData(per: Int, page: Int)
 }
 
 extension NasaApodTarget: TargetType {
@@ -32,6 +36,16 @@ extension NasaApodTarget: TargetType {
                 URLQueryItem(name: "page", value: page.description),
                 URLQueryItem(name: "startDate", value: startDate),
                 URLQueryItem(name: "endDate", value: endDate)]
+        case .getRefreshMonthsApods(let per, let page, let startDate, let endDate):
+            return [
+                URLQueryItem(name: "per", value: per.description),
+                URLQueryItem(name: "page", value: page.description),
+                URLQueryItem(name: "startDate", value: startDate),
+                URLQueryItem(name: "endDate", value: endDate)]
+        case .syncData(let per, let page):
+            return [
+                URLQueryItem(name: "per", value: per.description),
+                URLQueryItem(name: "page", value: page.description)]
         }
     }
     
@@ -42,6 +56,10 @@ extension NasaApodTarget: TargetType {
     
     public var path: String {
         switch self {
+        case .getRefreshMonthsApods:
+            return "refresh"
+        case .syncData:
+            return "sync"
         case .getApods, .getMonthsApods:
             return "apod"
         }
@@ -49,7 +67,7 @@ extension NasaApodTarget: TargetType {
     
     public var method: HttpMethodEnum {
         switch self {
-        case .getApods, .getMonthsApods:
+        case .getApods, .getMonthsApods, .syncData, .getRefreshMonthsApods:
             return .get
         }
     }

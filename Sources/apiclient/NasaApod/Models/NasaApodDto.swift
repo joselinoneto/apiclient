@@ -8,7 +8,7 @@
 import Foundation
 
 public struct NasaApodDto: Codable {
-    public var id: UUID
+    public var id: Int
     public let date: String?
     public let explanation: String?
     public let mediaType: String?
